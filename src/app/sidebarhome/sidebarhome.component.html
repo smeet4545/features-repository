@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="drawer.toggle()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-drawer-container class="example-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="side">
+    <div class="list_container">
+      <div class="title" routerLink="/movies-page">Movies</div>
+      <div class="title" routerLink="/medicine-Dosage">Medicine Dosages</div>
+    </div>
+  </mat-drawer>
+  <div class="page-container">
+    <div class="page-sub-container">
+      <div class="content">
+        <div>Welcome on this Page All Projects IS Listed on Sidenav</div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

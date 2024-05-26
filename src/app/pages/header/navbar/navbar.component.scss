@@ -6,7 +6,7 @@
     align-items: center;
 }
 .sub-container{
-    width: 1232px;
+    width: 1350px;
     max-width: calc(100% - 100px);
     margin: 0 auto;
     display: flex;
@@ -20,6 +20,7 @@
 .container{
     display: flex;
     align-items: center;
+    gap: 12px;
 }
 .logo{
     width: 154px;
@@ -88,4 +89,14 @@
     height: 30px;
     display: flex;
     align-items: center;
+}
+.icon-logo{
+    height: 54px;
+    display: flex;
+    align-items: center;
+
+    mat-icon{
+        color: #fff;
+        cursor: pointer;
+    }
 }

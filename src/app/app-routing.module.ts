@@ -2,9 +2,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/landing-page', pathMatch: 'full' },
+  { path: '', redirectTo: '/SideBAr-Home', pathMatch: 'full' },
+
   {
-    path: 'landing-page',
+    path: 'SideBAr-Home',
+    loadChildren: () =>
+      import('./sidebarhome/sidebarhome.module').then(
+        (m) => m.SidebarhomeModule
+      ),
+  },
+
+  {
+    path: 'movies-page',
     loadChildren: () =>
       import('./pages/landing-page/landing-page.module').then(
         (m) => m.LandingPageModule
@@ -38,10 +47,17 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'test-page',
+    path: 'medicine-Dosage',
     loadChildren: () =>
       import('./pages/test-page/test-page.module').then(
         (m) => m.TestPageModule
+      ),
+  },
+  {
+    path: 'medicine-dosage',
+    loadChildren: () =>
+      import('./pages/medicine-dosage/medicine-dosage.module').then(
+        (m) => m.MedicineDosageModule
       ),
   },
 ];

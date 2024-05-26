@@ -1,0 +1,41 @@
+
+
+.example-container {
+    width: 100%;
+    height: calc(100% + 64px);
+    max-height: 100%;
+    // margin: 12px;
+    // border: 1px solid #555;
+}
+
+mat-drawer-content {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+::ng-deep.mat-drawer-container.mat-drawer-container-explicit-backdrop .mat-drawer-side {
+    width: 175px;
+}    
+.mat-toolbar{
+    background: #5c75cb;
+    button{
+        cursor: pointer;
+    }
+}
+.list_container{
+    padding: 25px 12px 12px 12px;
+}
+.title{
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;   
+    line-height: normal;
+    letter-spacing: 0.90px;
+    cursor: pointer;
+}
+.content{
+    div{
+        padding: 25px;
+    }
+}
