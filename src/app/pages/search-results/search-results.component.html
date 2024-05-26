@@ -1,0 +1,60 @@
+<div class="main-container">
+    <!-- <app-landing-page (searchvalue)="getsearchvalue($event)"></app-landing-page> -->
+    <!-- <input type="text" (searchtext)="getsearchvalue($event)"> -->
+    
+    <div class="sub-container">
+        <div class="content-wrapper">
+            <div class="right-section">
+                <div class="right-section-wrapper">
+                    <h3 class="ryt-bg">Search Results</h3>
+                    <div class="list-items">
+                        <ul class="list-of-items">
+                            <li>
+                                <a>Movies</a>
+                                <span>{{movie_count}}</span>
+                            </li>
+                            <li>
+                                <a>TV Shows</a>
+                                <span>00</span>
+                            </li>
+                            <li>
+                                <a>People</a>
+                                <span>00</span>
+                            </li>
+                            <li>
+                                <a>Collections</a>
+                                <span>00</span>
+                            </li>
+                            <li>
+                                <a>Companys</a>
+                                <span>00</span>
+                            </li>
+                            <li>
+                                <a>Keywords</a>
+                                <span>00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="left-section">
+                <!-- <div class="left-section-wrapper"> -->
+                    <div *ngFor="let searchResult of search_array">
+                    <mat-card class="card-view">
+                        <div class="card-wrapper">
+                            <div class="poster">
+                            <img  src="{{Img_Path}}{{searchResult.poster_path}}" alt="movie-poster">
+                            </div>
+                            <div class="movie-details">
+                                <h3 class="movie-title">{{searchResult.original_title}}</h3>
+                                <p class="releade-date">{{searchResult.release_date}}</p>               
+                                <p class="description">{{searchResult.overview}}</p>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div> 
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>

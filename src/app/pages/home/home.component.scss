@@ -1,0 +1,37 @@
+
+swiper-container{
+    width: 100%;
+    height: 100% !important;
+}
+swiper-slide{
+    text-align: center;
+    font-size: 18px;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    padding: 0 0 40px;
+}
+
+.swiper-zoom-container{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+
+    img{
+        width: 100%;
+    }
+}
+.swiper-slide-prev{
+    width: 100% !important;
+}
+.swiper-slide-active{
+    width: 100% !important;
+}
+.swiper-slide-next{
+    width: 100% !important;
+}

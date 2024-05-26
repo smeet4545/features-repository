@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: jost,sans-serif; }
+
+*{
+    box-sizing: border-box;
+}
+
+.mat-typography {
+    font-family: jost, sans-serif !important;
+}
+// .swiper-slide-prev{
+//     width: 100% !important;
+// }
+// .swiper-slide-next {
+//     width: 100% !important;
+// }
+// .swiper-slide-active{
+//     width: 100% !important;
+// }
+
+

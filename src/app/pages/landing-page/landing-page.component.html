@@ -1,0 +1,101 @@
+<!-- <app-navbar></app-navbar> -->
+<div class="main-class">
+  <!-- <div class="sub-class"> -->
+  <div class="banner-section">
+    <!-- <img src="./assets/image/top-poster.jpg" alt="poster-page"> -->
+
+    <div class="search-container">
+      <form class="example-form" (ngSubmit)="onchange(moviename)">
+        <h3 class="main-heading">Welcome.</h3>
+        <p class="main-title">
+          Millions of movies, TV shows and people to discover. Explore now.
+        </p>
+        <mat-form-field class="form-field">
+          <!-- <mat-label>Email</mat-label> -->
+          <input
+            type="search"
+            [formControl]="searchKey"
+            [(ngModel)]="searchtext"
+            (keydown.enter)="$event.preventDefault()"
+            (keyup)="backEnable(searchKey.value)"
+            autocomplete="off"
+            matInput
+            placeholder="Search for a movie..."
+            #moviename
+          />
+        </mat-form-field>
+      </form>
+
+      <button class="btn-srch" type="submit" (click)="onchange(moviename)">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-class">
+    <div class="top-heading"><h2>Top Rated Movies</h2></div>
+    <div class="section-1">
+      <ng-container class="card" *ngFor="let movie of movies">
+        <!-- <div>{{movie.original_title}}</div> -->
+        <mat-card class="card-container">
+          <!-- <div> {{item.original_title}} </div> -->
+
+          <img src="{{ image }}{{ movie.poster_path }}" alt="poster" />
+          <h1>{{ movie.original_title }}</h1>
+        </mat-card>
+      </ng-container>
+    </div>
+    <div class="section-2">
+      <div class="trending-title"><h2>Trending Movies</h2></div>
+      <div class="movie-container">
+        <ng-container class="card" *ngFor="let item of trending_movie">
+          <mat-card class="card-container">
+            <img src="{{ image }}{{ item.poster_path }}" alt="poster" />
+            <h1>{{ item.original_title }}</h1>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+    <div class="section-3">
+      <div class="trending-title"><h2>Upcoming Movies</h2></div>
+      <div class="movie-container">
+        <ng-container class="card" *ngFor="let item of upcoming_movie">
+          <mat-card class="card-container">
+            <img src="{{ image }}{{ item.poster_path }}" alt="poster" />
+            <h1>{{ item.original_title }}</h1>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="trailer-container">
+    <div class="trailer-box">
+      <div class="latest-trailers-row">Video Trailers</div>
+      <div class="video-trailer">
+        <div class="card-video-section">
+          <div class="card-image" *ngFor="let item of trailers">
+            <div class="image-box" (click)="openpopup(item.youtube_video_id)">
+              <!-- <a class="image_trailer" href=""> -->
+              <img src="{{ item.thumbnail }}" alt="image-poster" />
+              <!-- </a> -->
+
+              <div class="play-more-btn">
+                <img
+                  src="/assets/image/play-button.svg"
+                  alt="play-button-image"
+                />
+              </div>
+            </div>
+
+            <div class="trailer-content">
+              <h2>{{ item.title }}</h2>
+              <h3>Published on {{ item.published | date : "MMM d, y" }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<movie-app-footer></movie-app-footer>

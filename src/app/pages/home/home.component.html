@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="sub">
+    <swiper-container
+      class="swiper-box"
+      [pagination]="{ type: 'bullets', clickable: true }"
+      navigation="true"
+      [spaceBetween]="50"
+      [autoplay]="1000"
+    >
+      <swiper-slide *ngFor="let img of swiper_images">
+        <div class="swiper-zoom-container">
+          <img [src]="img" />
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+</div>
