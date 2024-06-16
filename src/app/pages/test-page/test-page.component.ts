@@ -76,6 +76,7 @@ export class TestPageComponent {
         ]),
         categoryToggle: ['', [Validators.required]],
         inputfield: [false, [Validators.required]],
+        medicineinput: ['', [Validators.required]],
       }),
     ]),
   });
@@ -149,6 +150,7 @@ export class TestPageComponent {
         ]),
         categoryToggle: ['', [Validators.required]],
         inputfield: [false, [Validators.required]],
+        medicineinput: ['', [Validators.required]],
       })
     );
     console.log(formarrays);

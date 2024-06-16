@@ -24,6 +24,21 @@
                   </mat-button-toggle-group>
                 </div>
               </div>
+              <div class="medicine_section">
+                <div class="medicine_subsection">
+                  <div class="title">Medicine Name:--</div>
+                  <div class="input_field">
+                    <mat-form-field class="medicine_Name">
+                      <input
+                        matInput
+                        type="text"
+                        placeholder="Please Enter Medicine Name"
+                        formControlName="medicineinput"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
               <div
                 class="wrapper-container"
                 *ngIf="stack.get('inputfield')?.value == false"

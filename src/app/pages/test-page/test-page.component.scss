@@ -1,8 +1,11 @@
 .chip_form_field{
     width: 500px;
 }
-.morning{
-    margin-top: 30px;
+// .morning{
+//     margin-top: 30px;
+// }
+.medicine_section{
+    margin-top: 20px;
 }
 :host .chip_form_field::ng-deep.mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
     padding-top: 0px !important;
@@ -123,6 +126,33 @@
 }
 .hide{
     display: none;
+}
+.medicine_Name{
+    width: 500px;
+    ::ng-deep.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+            background-color: #fff;
+        }
+    ::ng-deep.mat-mdc-form-field-subscript-wrapper{
+        height: 0px;
+    }
+    ::ng-deep.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+        padding-top: 2px;
+        padding-bottom: 1px;
+    }    
+    ::ng-deep.mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
+    .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+        height: 54px;
+    }    
+}
+.title{
+    font-size: 20px;
+    letter-spacing: normal;
+    line-height: normal;
+    font-style: normal;
+}
+.medicine_subsection{
+    display: flex;
+    align-items: center;
 }
 .delete-icon{
     position: absolute;
