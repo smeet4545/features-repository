@@ -22,3 +22,17 @@ body { margin: 0; font-family: jost,sans-serif; }
 // }
 
 
+.dosageform .mat-mdc-dialog-container{
+    background-color: #f1f1f1;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    width: 1012px;
+    max-width: 80vw;
+    height: calc(100vh - 48px);
+
+    .mat-mdc-dialog-container .mdc-dialog__surface {
+        background-color: #f1f1f1;    
+    }    
+}

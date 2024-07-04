@@ -10,6 +10,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { DosageDataService } from './dosage-data.service';
+import { DosageFormModule } from '../dialog/dosage-form/dosage-form.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [TestPageComponent],
@@ -23,6 +27,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonToggleModule,
+    DosageFormModule,
+    MatDialogModule,
+    MatDividerModule,
   ],
+
+  providers: [DosageDataService],
 })
 export class TestPageModule {}

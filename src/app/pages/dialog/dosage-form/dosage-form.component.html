@@ -1,0 +1,305 @@
+<div class="page-main-container">
+  <div class="page-sub-container">
+    <div class="header-section">
+      <div class="header-wrapper">
+        <div class="header-content">
+          <span class="header-text"
+            >TAB-SR. {{ medicine_name.medicine_name }}</span
+          >
+        </div>
+        <div class="cross-icon" (click)="closeDialog()">
+          <button type="button" class="close_btn">
+            <mat-icon class="material-symbols-outlined">close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="body-section">
+      <div class="body-section-wrapper">
+        <form [formGroup]="MedicationForm">
+          <div formArrayName="medicationform_array" class="form-main-container">
+            <div *ngFor="let control of getControls.controls; let i = index">
+              <div [formGroupName]="i" class="form-container">
+                <div class="left-section">
+                  <div class="dosage-title">
+                    <span>Dosage</span>
+                  </div>
+                  <div class="dosage-frequency">
+                    <div class="category-toggle">
+                      <mat-button-toggle-group
+                        [multiple]="false"
+                        class="toggle-wrapper"
+                        formControlName="dosage_type"
+                      >
+                        <mat-button-toggle value="MAN" class="btn-toggle">
+                          MORNING-AFTERNOON-NIGHT
+                        </mat-button-toggle>
+                        <!-- <mat-button-toggle value="MAN" class="first-toggle">MORN-AFT-NIGHT</mat-button-toggle> -->
+                        <mat-button-toggle class="btn-toggle" value="SOS"
+                          >S.O.S</mat-button-toggle
+                        >
+                        <mat-button-toggle class="btn-toggle" value="others"
+                          >Others</mat-button-toggle
+                        >
+                      </mat-button-toggle-group>
+                    </div>
+                    <div class="dosage-section">
+                      <div
+                        class="dosage-section-wrapper"
+                        *ngIf="
+                          control.get('custom_dosage')?.value === false &&
+                          control.get('dosage_type')?.value === 'MAN'
+                        "
+                      >
+                        <div class="first-dosages">
+                          <div class="morning-logo">
+                            <img src="/assets/image/morning.svg" />
+                          </div>
+                          <mat-chip-listbox
+                            class="mat-chip-wrapper"
+                            selectable="true"
+                            formControlName="frequency1"
+                          >
+                            <div class="chip-container">
+                              <mat-chip-option
+                                *ngFor="let time of dosageChips; let k = index"
+                                [value]="time"
+                                selected
+                                >{{ time }}</mat-chip-option
+                              >
+                            </div>
+                            <mat-chip-option
+                              class="custom-chip"
+                              (click)="
+                                control.get('custom_dosage')?.setValue(true)
+                              "
+                              [value]="isSelected(i, 'morning')"
+                              [selectable]="false"
+                              >{{ isSelected(i, "morning") }}</mat-chip-option
+                            >
+                          </mat-chip-listbox>
+                        </div>
+                        <div class="second-dosages">
+                          <div class="morning-logo">
+                            <img src="/assets/image/afternoon.svg" />
+                          </div>
+                          <mat-chip-listbox
+                            class="mat-chip-wrapper"
+                            selectable="true"
+                            formControlName="frequency2"
+                          >
+                            <div class="chip-container">
+                              <mat-chip-option
+                                *ngFor="let time of dosageChips; let k = index"
+                                [value]="time"
+                                >{{ time }}</mat-chip-option
+                              >
+                            </div>
+                            <mat-chip-option
+                              class="custom-chip"
+                              (click)="
+                                control.get('custom_dosage')?.setValue(true)
+                              "
+                              [value]="isSelected(i, 'afternoon')"
+                              [selectable]="false"
+                              >{{ isSelected(i, "afternoon") }}</mat-chip-option
+                            >
+                          </mat-chip-listbox>
+                        </div>
+                        <div class="third-dosages">
+                          <div class="morning-logo">
+                            <img src="assets/image/night.svg" />
+                          </div>
+                          <mat-chip-listbox
+                            class="mat-chip-wrapper"
+                            selectable="true"
+                            formControlName="frequency3"
+                          >
+                            <div class="chip-container">
+                              <mat-chip-option
+                                *ngFor="let time of dosageChips; let k = index"
+                                [value]="time"
+                                >{{ time }}</mat-chip-option
+                              >
+                            </div>
+                            <mat-chip-option
+                              class="custom-chip"
+                              (click)="
+                                control.get('custom_dosage')?.setValue(true)
+                              "
+                              [value]="isSelected(i, 'night')"
+                              [selectable]="false"
+                              >{{ isSelected(i, "night") }}</mat-chip-option
+                            >
+                          </mat-chip-listbox>
+                        </div>
+                      </div>
+                      <div
+                        class="input-field-goup"
+                        *ngIf="control.get('custom_dosage')?.value == true"
+                      >
+                        <div
+                          class="back-btn-div"
+                          (click)="
+                            control.get('custom_dosage')?.setValue(false)
+                          "
+                        >
+                          <button mat-button (click)="backtoDosage(i)">
+                            <mat-icon>arrow_back</mat-icon>
+                          </button>
+                        </div>
+                        <div
+                          class="custo-input-div"
+                          *ngIf="control.get('custom_dosage')?.value"
+                        >
+                          <mat-form-field class="custom-dosage">
+                            <input
+                              type="number"
+                              matInput
+                              (keydown)="checkDigit($event, '1')"
+                              formControlName="frequency1"
+                              #freq1
+                            />
+                          </mat-form-field>
+                          <span class="dosage-dash"> - </span>
+                          <mat-form-field class="custom-dosage">
+                            <input
+                              type="number"
+                              matInput
+                              formControlName="frequency2"
+                              (keydown)="checkDigit($event, '2')"
+                              #freq2
+                            />
+                          </mat-form-field>
+                          <span class="dosage-dash"> - </span>
+                          <mat-form-field class="custom-dosage">
+                            <input
+                              type="number"
+                              matInput
+                              formControlName="frequency3"
+                              (keydown)="checkDigit($event, '3')"
+                              #freq3
+                            />
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="error_message">Please enter the dosage</div> -->
+                  <div class="duration-section">
+                    <div class="duration-wrapper">
+                      <div class="duration-text">DURATION</div>
+                    </div>
+                    <mat-chip-listbox
+                      class="mat-chip-wrapper"
+                      selectable="true"
+                      formControlName="duration"
+                    >
+                      <div class="chip-container">
+                        <mat-chip-option
+                          *ngFor="let time of durationChips; let k = index"
+                          [value]="time"
+                          >{{ time }}</mat-chip-option
+                        >
+                      </div>
+                    </mat-chip-listbox>
+                    <div class="categoryToggle">
+                      <mat-button-toggle-group
+                        [multiple]="false"
+                        class="toggleWrapper"
+                        formControlName="duration_type"
+                      >
+                        <mat-button-toggle value="day" class="btn-toggle">
+                          Days
+                        </mat-button-toggle>
+                        <mat-button-toggle class="btn-toggle" value="weeks"
+                          >Weeks</mat-button-toggle
+                        >
+                        <mat-button-toggle class="btn-toggle" value="months"
+                          >Months</mat-button-toggle
+                        >
+                        <mat-button-toggle class="btn-toggle" value="years"
+                          >Years</mat-button-toggle
+                        >
+                      </mat-button-toggle-group>
+                    </div>
+                  </div>
+                </div>
+                <div class="right-section">
+                  <div class="notes-text">Notes</div>
+                  <div class="chip-form-container">
+                    <div class="upper-chips" formArrayName="instruction">
+                      <mat-chip-listbox
+                        class="notes-upperchip-container"
+                        [selectable]="true"
+                      >
+                        <mat-chip-option
+                          selected="true"
+                          *ngFor="
+                            let control of chipcontrols(i).controls;
+                            let j = index
+                          "
+                          [value]=""
+                          ><span class="upper-text">{{
+                            control.value.name
+                          }}</span></mat-chip-option
+                        >
+                      </mat-chip-listbox>
+                    </div>
+                    <mat-form-field class="form-field">
+                      <input
+                        type="text"
+                        matInput
+                        placeholder="instruction"
+                        class="notes_input"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="notes_belowchips">
+                    <mat-chip-listbox class="notes-chip-container">
+                      <mat-chip-option
+                        class="chip-content"
+                        *ngFor="let items of notessArray"
+                        [value]="items"
+                        (click)="instruct(items, i)"
+                        ><span>{{ items }}</span></mat-chip-option
+                      >
+                    </mat-chip-listbox>
+                  </div>
+                </div>
+                <div class="delete-icon">
+                  <span [ngClass]="{ show: !delete }" (click)="deleteField(i)">
+                    <mat-icon>delete</mat-icon>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="btn-group">
+              <div class="add-btn-container">
+                <button
+                  mat-button
+                  type="button"
+                  class="fix_submit_button"
+                  (click)="addSingleForm()"
+                >
+                  Add New Dosage
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- <div class="error_message">
+      <div *ngIf="submitted && checkError()">
+        <mat-error> Please enter the dosage </mat-error>
+      </div>
+    </div> -->
+    <div class="btn-container" (click)="saveForm()">
+      <button mat-button type="button" class="fix_submit_button save-btn">
+        Save
+      </button>
+    </div>
+  </div>
+</div>
